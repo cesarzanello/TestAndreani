@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using MassTransit.Configurators;
 
 namespace apiGeo.geolocalizador.Repository
 {
@@ -18,6 +19,7 @@ namespace apiGeo.geolocalizador.Repository
         internal MongoDbRepository _repository = new MongoDbRepository();
         private IMongoCollection<Adress> Collection;
         private IMongoCollection<Coordinates> CollectionCD;
+        private SendMessages _send;
 
         public RpAdress() 
         {
@@ -42,32 +44,14 @@ namespace apiGeo.geolocalizador.Repository
             coord.Estado = "PROCESANDO";
             adress.IdOperacion = coord.IdOperacion;
             await CollectionCD.InsertOneAsync(coord);
-            SendMessage(adress);
+
+            _send = new SendMessages();
+            _send.SendMessage(adress);
 
             return Uid.ToString();
         }
 
-        private static void SendMessage(Adress adress)
-        {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
-            {
-                channel.QueueDeclare(queue: "mensajeQueue",
-                                     durable: false,
-                                     exclusive: false,
-                                     autoDelete: false,
-                                     arguments: null);
-
-                string message = JsonSerializer.Serialize(adress);
-                var body = Encoding.UTF8.GetBytes(message);
-
-                channel.BasicPublish(exchange: "",
-                                     routingKey: "mensajeQueue",
-                                     basicProperties: null,
-                                     body: body);
-            }
-        }
+       
 
         public async Task UpdateCoordinates(Coordinates coord)
         {
