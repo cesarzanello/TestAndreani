@@ -17,6 +17,7 @@ services:
       dockerfile: apiGeo.geolocalizador/Dockerfile
     depends_on:
       - rabbitmq
+      - mongodb
     ports:
       - '5002:80'
   rabbitmq:
