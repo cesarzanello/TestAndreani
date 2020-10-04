@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  apigeo.geodecodificador:
+    image: ${DOCKER_REGISTRY-}apigeogeodecodificador
+    build:
+      context: .
+      dockerfile: ApiGeo.geodecodificador/Dockerfile
+    depends_on:
+      - rabbitmq
+    ports:
+      - '5001:80'
+  apigeo.geolocalizador:
+    image: ${DOCKER_REGISTRY-}apigeogeolocalizador
+    build:
+      context: .
+      dockerfile: apiGeo.geolocalizador/Dockerfile
+    depends_on:
+      - rabbitmq
+    ports:
+      - '5002:80'
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - '15672:15672'
+      - '5672:5672'
+   mongodb:
+    image: mongo
+    ports:
+        - '27889:27017'
