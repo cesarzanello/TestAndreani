@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apiGeo.geolocalizador", "apiGeo.geolocalizador\apiGeo.geolocalizador.csproj", "{FA806375-E113-46D6-9383-77A00AC8042F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGeo.geodecodificador", "ApiGeo.geodecodificador\ApiGeo.geodecodificador.csproj", "{26DA85BE-D152-46DF-B017-F378F08DEE1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGeo.geodecodificador", "ApiGeo.geodecodificador\ApiGeo.geodecodificador.csproj", "{26DA85BE-D152-46DF-B017-F378F08DEE1C}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DBA41A7E-4BDF-42CD-959F-474A19824649}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extension", "..\Extension\Extension.csproj", "{F758727E-325D-4F51-90D5-AAB008105AFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{DBA41A7E-4BDF-42CD-959F-474A19824649}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA41A7E-4BDF-42CD-959F-474A19824649}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBA41A7E-4BDF-42CD-959F-474A19824649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F758727E-325D-4F51-90D5-AAB008105AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F758727E-325D-4F51-90D5-AAB008105AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F758727E-325D-4F51-90D5-AAB008105AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F758727E-325D-4F51-90D5-AAB008105AFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

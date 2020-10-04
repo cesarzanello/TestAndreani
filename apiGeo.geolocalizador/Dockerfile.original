@@ -8,7 +8,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["apiGeo.geolocalizador/apiGeo.geolocalizador.csproj", "apiGeo.geolocalizador/"]
-COPY ["../Extension/Extension.csproj", "../Extension/"]
 RUN dotnet restore "apiGeo.geolocalizador/apiGeo.geolocalizador.csproj"
 COPY . .
 WORKDIR "/src/apiGeo.geolocalizador"

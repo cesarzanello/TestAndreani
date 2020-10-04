@@ -11,6 +11,7 @@ services:
     ports:
       - '5001:80'
       - '5002:443'
+    restart: on-failure
   apigeo.geolocalizador:
     image: ${DOCKER_REGISTRY-}apigeogeolocalizador
     build:
@@ -22,11 +23,12 @@ services:
     ports:
       - '5003:80'
       - '5004:443'
+    restart: on-failure
   rabbitmq:
     image: rabbitmq:3-management
     ports:
+      - '5672:5672'  
       - '15672:15672'
-      - '5672:5672'
   mongodb:
     image: mongo
     ports:
