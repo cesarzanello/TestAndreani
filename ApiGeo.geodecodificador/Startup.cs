@@ -28,7 +28,7 @@ namespace ApiGeo.geodecodificador
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.Run<HostedServiceRabbit>();
+            services.AddHostedService<HostedServiceRabbit>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
